@@ -1,0 +1,35 @@
+package nomor_6;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Nomor_6 {
+
+    public static void main(String[] args) {
+        try {
+//            String pbo = "src/nomor_6/pbo.csv";
+            File file = new File("src/nomor_6/pbo.csv");
+            Scanner x = new Scanner(file);
+            x.nextLine();
+            ArrayList<MataKuliah> list = new ArrayList<>();
+            while (x.hasNextLine()) {
+                String baris = x.nextLine();
+                String[] kolom = baris.split(";");
+                String kode = kolom[0];
+                String nama = kolom[1];
+                int sks = Integer.parseInt(kolom[2]);
+                String nilai = kolom[3];
+                MataKuliah mk = new MataKuliah(kode, nama, sks, nilai);
+                list.add(mk);
+            }
+            for (MataKuliah mk : list) {
+                System.out.println(mk.kode + " | " + mk.nama + " | " + mk.sks + " | " + mk.nilai);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+}
