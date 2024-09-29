@@ -1,0 +1,50 @@
+
+package matrixno2;
+
+
+public class Matrixno2 {
+
+   
+    public static void main(String[] args) {
+    
+        int[][] matriks = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        // Menentukan dimensi matriks
+        int baris = matriks.length;
+        int kolom = matriks[0].length;
+
+        // Mendefinisikan matriks transpose
+        int[][] transpose = new int[kolom][baris];
+
+        // Melakukan transpose matriks
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                transpose[j][i] = matriks[i][j];
+            }
+        }
+
+        // Mencetak matriks asli
+        System.out.println("Matriks Asli:");
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                System.out.print(matriks[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Mencetak matriks transpose
+        System.out.println("Matriks Transpose:");
+        for (int i = 0; i < kolom; i++) {
+            for (int j = 0; j < baris; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+    
