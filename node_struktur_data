@@ -1,0 +1,24 @@
+
+package struktur_data;
+import java.util.LinkedList;
+public class Node {
+    private String Name;
+private LinkedList<Node> adjecentNode = new LinkedList<Node>();
+public Node(String name) {
+Name = name;
+}
+public String getName() {
+return Name;
+}
+public LinkedList<Node> getAdjecentNode() {
+return adjecentNode;
+}
+public void addAdjecentNode(Node node) {
+this.adjecentNode.add(node);
+}
+public void connect(Node node) {
+this.adjecentNode.add(node);
+node.adjecentNode.add(this);
+}
+    
+}
