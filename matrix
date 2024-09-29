@@ -1,0 +1,81 @@
+package matrix;
+
+import java.util.Scanner;
+
+public class Matrix {
+
+    public static void main(String[] args) {
+        Scanner masukan = new Scanner(System.in);
+
+        int[][] Matriks1 = {
+                {6, 8, 7},
+                {5, 8, 4},
+                {8, 9, 9}
+        };
+
+        int[][] Matriks2 = {
+                {2, 5, 1},
+                {7, 8, 6},
+                {2, 9, 9}
+        };
+
+        // Input nilai skalar
+        System.out.print("Masukkan nilai skalar: ");
+        int skalar = masukan.nextInt();
+
+        // Perkalian matriks
+        int[][] hasilKaliMatriks = perkalianMatriks(Matriks1, Matriks2);
+
+        // Perkalian skalar
+        int[][] hasilKaliSkalar = perkalianSkalar(skalar, hasilKaliMatriks);
+
+        // Cetak hasil perkalian matriks
+        System.out.println("Hasil Perkalian Matriks:");
+        cetakMatriks(hasilKaliMatriks);
+
+        // Cetak hasil perkalian skalar
+        System.out.println("Hasil Perkalian Skalar:");
+        cetakMatriks(hasilKaliSkalar);
+    }
+
+    private static int[][] perkalianMatriks(int[][] A, int[][] B) {
+        int barisA = A.length;
+        int kolomA = A[0].length;
+        int barisB = B.length;
+        int kolomB = B[0].length;
+
+       
+
+        int[][] C = new int[barisA][kolomB];
+        for (int i = 0; i < barisA; i++) {
+            for (int j = 0; j < kolomB; j++) {
+                for (int k = 0; k < kolomA; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        return C;
+    }
+
+    private static int[][] perkalianSkalar(int skalar, int[][] A) {
+        int baris = A.length;
+        int kolom = A[0].length;
+        int[][] D = new int[baris][kolom];
+
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                D[i][j] = skalar * A[i][j];
+            }
+        }
+        return D;
+    }
+
+    private static void cetakMatriks(int[][] matriks) {
+        for (int i = 0; i < matriks.length; i++) {
+            for (int j = 0; j < matriks[0].length; j++) {
+                System.out.print(matriks[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
